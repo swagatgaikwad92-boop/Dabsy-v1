@@ -1,0 +1,49 @@
+window.DABSyTie = (function () {
+  let tieContainer;
+
+  function init() {
+    tieContainer = document.getElementById('tie-container');
+    window.DABSyEvents.on('STATE_CHANGED', handleStateUpdate);
+  }
+
+  function handleStateUpdate({ current }) {
+    if (!tieContainer) return;
+    tieContainer.classList.remove('tie-thinking', 'tie-listening', 'tie-speaking', 'tie-study', 'tie-alert');
+
+    switch (current) {
+      case 'THINKING':
+        tieContainer.classList.add('tie-thinking');
+        break;
+      case 'LISTENING':
+        tieContainer.classList.add('tie-listening');
+        break;
+      case 'SPEAKING':
+        tieContainer.classList.add('tie-speaking');
+        break;
+      case 'STUDY_FOCUS':
+      case 'QUIZ':
+        tieContainer.classList.add('tie-study');
+        break;
+      case 'REACTING':
+      case 'SURPRISED':
+        tieContainer.classList.add('tie-alert');
+        break;
+      default:
+        break;
+    }
+  }
+
+  function pulse() {
+    if (!tieContainer) return;
+    tieContainer.style.transform = 'scale(1.15)';
+    setTimeout(() => {
+      tieContainer.style.transform = '';
+    }, 220);
+  }
+
+  return {
+    init,
+    pulse
+  };
+})();
+
