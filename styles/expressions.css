@@ -1,0 +1,110 @@
+/* Neutral State */
+.expr-neutral .eye {
+  border-radius: var(--eye-radius);
+}
+
+/* Curious: widening + asymmetric eyebrow angle */
+.expr-curious .eye-left {
+  transform: scale(1.08, 1.1) translateY(-6px) rotate(-3deg);
+}
+.expr-curious .eye-right {
+  transform: scale(1.02, 1.04) translateY(-2px) rotate(2deg);
+}
+
+/* Happy: upward curved crescent squint */
+.expr-happy .eye {
+  height: 75px;
+  border-radius: 46px 46px 14px 14px;
+  transform: translateY(-8px);
+}
+.expr-happy .eye-pupil {
+  opacity: 0.6;
+}
+
+/* Excited: heightened scale, dilated glow */
+.expr-excited .eye {
+  transform: scale(1.16, 1.14);
+}
+.expr-excited .eye-outer-glow {
+  opacity: 1;
+  filter: blur(20px);
+}
+
+/* Confused: tilted, asymmetric sizing */
+.expr-confused .eye-left {
+  transform: scale(0.92, 0.95) rotate(-7deg) translateY(4px);
+}
+.expr-confused .eye-right {
+  transform: scale(1.1, 1.12) rotate(6deg) translateY(-8px);
+}
+
+/* Thinking: squinted, gaze elevated slightly */
+.expr-thinking .eye {
+  height: 82px;
+  border-radius: 28px;
+  transform: translateY(-4px);
+}
+.expr-thinking .eye-highlight {
+  transform: translate(6px, -4px);
+}
+
+/* Focused: sharp, condensed horizontal form */
+.expr-focused .eye {
+  height: 110px;
+  transform: scale(0.96, 0.96);
+  border-radius: 36px;
+}
+.expr-focused .eye-luminous-body {
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.75), inset 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+/* Sleepy: droopy top lids */
+.expr-sleepy .eye {
+  height: 48px;
+  border-radius: 20px 20px 30px 30px;
+  transform: translateY(14px);
+  opacity: 0.65;
+}
+.expr-sleepy .eye-outer-glow {
+  opacity: 0.3;
+}
+
+/* Surprised: massive vertical expansion */
+.expr-surprised .eye {
+  transform: scale(1.24, 1.28);
+  border-radius: 50px;
+}
+
+/* Concerned: inward tilt */
+.expr-concerned .eye-left {
+  transform: rotate(7deg) scale(0.96);
+}
+.expr-concerned .eye-right {
+  transform: rotate(-7deg) scale(0.96);
+}
+
+/* Playful: winking or one-eye squish */
+.expr-playful .eye-left {
+  transform: scale(1.1) rotate(-4deg);
+}
+.expr-playful .eye-right {
+  height: 38px;
+  border-radius: 18px;
+  transform: translateY(12px) rotate(2deg);
+}
+
+/* Listening: soft pulsing expansion */
+.expr-listening .eye {
+  transform: scale(1.04, 1.04);
+}
+
+/* Speaking: dynamic breathing scale */
+.expr-speaking .eye {
+  animation: speak-bob 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes speak-bob {
+  0% { transform: scale(1, 1); }
+  100% { transform: scale(1.03, 0.97); }
+}
+
