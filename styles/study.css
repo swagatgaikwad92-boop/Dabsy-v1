@@ -1,0 +1,92 @@
+.study-hero {
+  margin-bottom: 24px;
+}
+
+.study-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.study-card .badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-cyan);
+  background: rgba(0, 212, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.study-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.study-card p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.study-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Flashcard 3D Card */
+.flashcard-dock {
+  margin-top: 20px;
+  perspective: 1000px;
+}
+
+.flashcard {
+  width: 100%;
+  min-height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--c-border);
+}
+
+.card-front {
+  background: rgba(15, 23, 42, 0.7);
+  color: #fff;
+}
+
+.card-back {
+  background: rgba(8, 28, 48, 0.85);
+  color: var(--c-cyan);
+  transform: rotateY(180deg);
+}
+
+.card-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
