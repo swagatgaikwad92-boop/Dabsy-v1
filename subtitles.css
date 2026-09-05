@@ -1,0 +1,36 @@
+.subtitle-mount {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 520px;
+  pointer-events: none;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+}
+
+.subtitle-text {
+  background: rgba(4, 9, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--c-white-dim);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
+  letter-spacing: 0.015em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
