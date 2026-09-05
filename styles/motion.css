@@ -1,0 +1,65 @@
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.anim-nod {
+  animation: creature-nod 0.4s ease-out;
+}
+
+.anim-shake {
+  animation: creature-shake 0.45s ease-out;
+}
+
+@keyframes creature-nod {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes creature-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px) rotate(-2deg); }
+  75% { transform: translateX(8px) rotate(2deg); }
+}
+
+/* Ambient Notification Capsule */
+.notification-capsule {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 20px) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 16, 28, 0.85);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  backdrop-filter: blur(16px);
+  padding: 8px 18px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 45;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: notify-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.notification-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-cyan);
+  box-shadow: 0 0 8px var(--c-cyan);
+}
+
+.notification-message {
+  font-size: 0.8rem;
+  color: var(--c-white-dim);
+}
+
+@keyframes notify-in {
+  0% { opacity: 0; transform: translate(-50%, -10px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
