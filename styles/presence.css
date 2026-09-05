@@ -1,0 +1,35 @@
+.veil {
+  position: absolute;
+  inset: 0;
+  background-color: #000000;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.veil.awakened {
+  opacity: 0;
+}
+
+.creature-mount {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.creature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  will-change: transform;
+}
+
