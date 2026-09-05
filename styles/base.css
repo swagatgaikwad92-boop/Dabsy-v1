@@ -1,0 +1,76 @@
+:root {
+  --c-bg: #020408;
+  --c-deep: #050b14;
+  --c-cyan: #00d4ff;
+  --c-cyan-deep: #008eb3;
+  --c-cyan-soft: rgba(0, 212, 255, 0.18);
+  --c-white: #ffffff;
+  --c-white-dim: rgba(255, 255, 255, 0.75);
+  --c-amber: #ffaa00;
+  --c-purple: #c084fc;
+  --c-border: rgba(255, 255, 255, 0.08);
+
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --eye-w: 94px;
+  --eye-h: 140px;
+  --eye-radius: 46px;
+  --eye-gap: 58px;
+
+  --spring-easing: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-bg);
+  color: var(--c-white);
+  font-family: var(--font-system);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+#dabsy-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+}
+
+input, select {
+  font-family: inherit;
+  outline: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
