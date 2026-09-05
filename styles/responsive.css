@@ -1,0 +1,33 @@
+@media (max-width: 480px) {
+  :root {
+    --eye-w: 80px;
+    --eye-h: 120px;
+    --eye-radius: 40px;
+    --eye-gap: 46px;
+  }
+
+  .ambient-glow {
+    width: 380px;
+    height: 380px;
+  }
+
+  .world-tab {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --eye-w: 110px;
+    --eye-h: 164px;
+    --eye-radius: 54px;
+    --eye-gap: 72px;
+  }
+
+  .ambient-glow {
+    width: 680px;
+    height: 680px;
+  }
+}
+
