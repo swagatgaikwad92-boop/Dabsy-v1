@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#020408" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="D.A.B.s.y — Digital Butler, Companion & Study Partner" />
+  <title>D.A.B.s.y</title>
+
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/presence.css" />
+  <link rel="stylesheet" href="styles/atmosphere.css" />
+  <link rel="stylesheet" href="styles/eyes.css" />
+  <link rel="stylesheet" href="styles/expressions.css" />
+  <link rel="stylesheet" href="styles/tie.css" />
+  <link rel="stylesheet" href="styles/subtitles.css" />
+  <link rel="stylesheet" href="styles/world.css" />
+  <link rel="stylesheet" href="styles/panels.css" />
+  <link rel="stylesheet" href="styles/study.css" />
+  <link rel="stylesheet" href="styles/butler.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="styles/motion.css" />
+</head>
+<body>
+  <!-- Root Canvas Container -->
+  <main id="dabsy-stage" class="stage-dark">
+    <!-- Atmospheric Lighting & Depth -->
+    <div id="atmosphere" class="atmosphere">
+      <div class="ambient-glow"></div>
+      <div class="particles-layer" id="particles"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <!-- Wake-up Veil -->
+    <div id="veil" class="veil"></div>
+
+    <!-- Primary Creature Assembly -->
+    <div id="creature-mount" class="creature-mount">
+      <div id="creature" class="creature" aria-label="D.A.B.s.y Presence">
+        <!-- Eyes Assembly -->
+        <div id="eyes-container" class="eyes-container">
+          <!-- Left Eye -->
+          <div id="eye-left" class="eye eye-left">
+            <div class="eye-outer-glow"></div>
+            <div class="eye-luminous-body">
+              <div class="eye-inner-gradient"></div>
+              <div class="eye-pupil"></div>
+              <div class="eye-highlight"></div>
+            </div>
+            <div class="eye-depth-shadow"></div>
+          </div>
+
+          <!-- Right Eye -->
+          <div id="eye-right" class="eye eye-right">
+            <div class="eye-outer-glow"></div>
+            <div class="eye-luminous-body">
+              <div class="eye-inner-gradient"></div>
+              <div class="eye-pupil"></div>
+              <div class="eye-highlight"></div>
+            </div>
+            <div class="eye-depth-shadow"></div>
+          </div>
+        </div>
+
+        <!-- Bow Tie Assembly -->
+        <div id="tie-container" class="tie-container" role="button" tabindex="0" aria-label="Bow Tie Status & Utility">
+          <div class="tie-glow"></div>
+          <div class="tie-body">
+            <div class="tie-wing tie-wing-left"></div>
+            <div class="tie-center">
+              <div class="tie-knot"></div>
+              <div id="tie-gem" class="tie-gem"></div>
+            </div>
+            <div class="tie-wing tie-wing-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contextual Surrounding Halo Overlay -->
+    <div id="contextual-halo" class="contextual-halo hidden" aria-hidden="true">
+      <div class="halo-ring"></div>
+      <div id="halo-content" class="halo-content"></div>
+    </div>
+
+    <!-- Minimal Floating Speech Subtitles -->
+    <div id="subtitle-mount" class="subtitle-mount" aria-live="polite">
+      <p id="subtitle-text" class="subtitle-text"></p>
+    </div>
+
+    <!-- Ambient Notification Capsule -->
+    <div id="notification-capsule" class="notification-capsule hidden" role="status">
+      <span class="notification-dot"></span>
+      <span id="notification-message" class="notification-message"></span>
+    </div>
+
+    <!-- Expanded World Experience -->
+    <section id="dabsy-world" class="world-container hidden" aria-hidden="true">
+      <div class="world-backdrop"></div>
+      <header class="world-nav">
+        <button id="world-nav-desk" class="world-tab active" data-tab="desk">Desk</button>
+        <button id="world-nav-study" class="world-tab" data-tab="study">Study</button>
+        <button id="world-nav-vault" class="world-tab" data-tab="vault">Vault</button>
+        <button id="world-nav-settings" class="world-tab" data-tab="settings">Config</button>
+        <button id="world-close" class="world-close-btn" aria-label="Return to Creature">✕</button>
+      </header>
+
+      <div class="world-canvas">
+        <!-- Desk Area (Butler & Schedule) -->
+        <div id="world-panel-desk" class="world-panel active">
+          <div class="panel-section">
+            <div class="section-header">
+              <span class="section-tag">Logistics & Day Plan</span>
+              <h2 class="section-title">The Desk</h2>
+            </div>
+            <div id="schedule-timeline" class="timeline-stream"></div>
+            <div class="action-row">
+              <button id="btn-add-task" class="action-chip">+ Add Commitment</button>
+              <button id="btn-butler-balance" class="action-chip ghost">Audit Free Time</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Study Corner (Tutor Brain) -->
+        <div id="world-panel-study" class="world-panel">
+          <div class="panel-section">
+            <div class="section-header">
+              <span class="section-tag">Cognitive Hub</span>
+              <h2 class="section-title">Study Sanctum</h2>
+            </div>
+            <div class="study-hero">
+              <div id="study-active-topic" class="study-card">
+                <span class="badge">Active Focus</span>
+                <h3 id="study-focus-heading">Revision Routine</h3>
+                <p id="study-focus-desc">Ready to review active subject blocks.</p>
+                <div class="study-actions">
+                  <button id="btn-start-focus" class="action-chip primary">Begin 25m Focus</button>
+                  <button id="btn-launch-quiz" class="action-chip">Quick Quiz</button>
+                </div>
+              </div>
+            </div>
+            <div id="flashcard-dock" class="flashcard-dock hidden">
+              <div id="flashcard" class="flashcard">
+                <div class="card-face card-front">
+                  <p id="card-question">Loading topic card...</p>
+                </div>
+                <div class="card-face card-back">
+                  <p id="card-answer"></p>
+                </div>
+              </div>
+              <div class="card-controls">
+                <button id="btn-card-flip" class="action-chip ghost">Flip Card</button>
+                <button id="btn-card-next" class="action-chip">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vault (Memories & Companion Traits) -->
+        <div id="world-panel-vault" class="world-panel">
+          <div class="panel-section">
+            <div class="section-header">
+              <span class="section-tag">Shared History</span>
+              <h2 class="section-title">Memory Vault</h2>
+            </div>
+            <div id="vault-entries" class="vault-entries"></div>
+            <div class="action-row">
+              <button id="btn-add-memory" class="action-chip">+ Store Observation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuration -->
+        <div id="world-panel-settings" class="world-panel">
+          <div class="panel-section">
+            <div class="section-header">
+              <span class="section-tag">Neural Parameters</span>
+              <h2 class="section-title">Settings</h2>
+            </div>
+            <form id="settings-form" class="settings-form" onsubmit="return false;">
+              <div class="form-group">
+                <label for="gemini-key">Gemini API Key</label>
+                <input type="password" id="gemini-key" placeholder="AIzaSy..." autocomplete="off" />
+                <small>Stored locally. Free fallback offline mode active when empty.</small>
+              </div>
+              <div class="form-group">
+                <label for="gemini-model">Gemini Model</label>
+                <input type="text" id="gemini-model" value="gemini-2.5-flash" />
+              </div>
+              <div class="form-group">
+                <label for="permission-mode">Butler Authority</label>
+                <select id="permission-mode">
+                  <option value="ASK">Ask Permission Always</option>
+                  <option value="SUGGEST">Suggest & Advise</option>
+                  <option value="AUTO">Autonomous Balancing</option>
+                </select>
+              </div>
+              <div class="form-group-checkbox">
+                <input type="checkbox" id="voice-synthesis-enabled" checked />
+                <label for="voice-synthesis-enabled">Companion Voice Synthesis</label>
+              </div>
+              <button id="btn-save-settings" class="action-chip primary">Save Config</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Voice/Text Input Bar Overlay -->
+    <div id="input-overlay" class="input-overlay hidden" aria-hidden="true">
+      <div class="input-plate">
+        <input type="text" id="query-input" placeholder="Talk with D.A.B.s.y..." autocomplete="off" />
+        <button id="btn-submit-query" class="input-send" aria-label="Send">↑</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Script Pipeline in Strict Dependency Order -->
+  <script src="js/dabsy-storage.js"></script>
+  <script src="js/dabsy-events.js"></script>
+  <script src="js/dabsy-state.js"></script>
+  <script src="js/dabsy-permissions.js"></script>
+  <script src="js/dabsy-context.js"></script>
+  <script src="js/dabsy-personality.js"></script>
+  <script src="js/dabsy-motion.js"></script>
+  <script src="js/dabsy-expression.js"></script>
+  <script src="js/dabsy-eyes.js"></script>
+  <script src="js/dabsy-tie.js"></script>
+  <script src="js/dabsy-voice.js"></script>
+  <script src="js/dabsy-ai.js"></script>
+  <script src="js/dabsy-memory.js"></script>
+  <script src="js/dabsy-scheduler.js"></script>
+  <script src="js/dabsy-study.js"></script>
+  <script src="js/dabsy-behaviour.js"></script>
+  <script src="js/dabsy-notifications.js"></script>
+  <script src="js/dabsy-ui.js"></script>
+  <script src="js/dabsy-world.js"></script>
+  <script src="js/dabsy-interaction.js"></script>
+  <script src="js/dabsy-core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+                </html>
+
