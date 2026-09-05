@@ -1,0 +1,112 @@
+.tie-container {
+  position: relative;
+  margin-top: 36px;
+  cursor: pointer;
+  z-index: 12;
+  outline: none;
+  will-change: transform;
+}
+
+.tie-glow {
+  position: absolute;
+  inset: -14px;
+  border-radius: 30px;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.3) 0%, rgba(0, 212, 255, 0.12) 50%, transparent 75%);
+  filter: blur(10px);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.tie-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+
+/* Left Wing */
+.tie-wing-left {
+  width: 38px;
+  height: 32px;
+  background: linear-gradient(135deg, #ffffff 20%, #e2f5ff 70%, #b8e6ff 100%);
+  clip-path: polygon(0% 12%, 100% 38%, 100% 62%, 0% 88%);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  transform-origin: right center;
+  will-change: transform;
+}
+
+/* Right Wing */
+.tie-wing-right {
+  width: 38px;
+  height: 32px;
+  background: linear-gradient(225deg, #ffffff 20%, #e2f5ff 70%, #b8e6ff 100%);
+  clip-path: polygon(0% 38%, 100% 12%, 100% 88%, 0% 62%);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* Center Knot */
+.tie-center {
+  position: relative;
+  width: 22px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), inset 0 0 4px rgba(0, 160, 220, 0.4);
+  z-index: 2;
+}
+
+.tie-gem {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--c-cyan);
+  box-shadow: 0 0 6px var(--c-cyan);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Status States */
+.tie-thinking .tie-gem {
+  background-color: var(--c-purple);
+  box-shadow: 0 0 8px var(--c-purple);
+  animation: pulse-gem 1s infinite alternate;
+}
+
+.tie-listening .tie-gem {
+  background-color: var(--c-cyan);
+  box-shadow: 0 0 12px var(--c-cyan);
+  animation: pulse-gem 0.6s infinite alternate;
+}
+
+.tie-speaking .tie-body {
+  animation: tie-flutter 0.3s ease-in-out infinite alternate;
+}
+
+.tie-study .tie-gem {
+  background-color: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.tie-alert .tie-gem {
+  background-color: var(--c-amber);
+  box-shadow: 0 0 12px var(--c-amber);
+}
+
+@keyframes pulse-gem {
+  0% { opacity: 0.4; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes tie-flutter {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-1.5px) scale(1.02); }
+      }
+
