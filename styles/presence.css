@@ -5,11 +5,18 @@
   z-index: 50;
   pointer-events: none;
   opacity: 1;
-  transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: autonomousWake 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
 }
 
-.veil.awakened {
-  opacity: 0;
+@keyframes autonomousWake {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .creature-mount {
@@ -32,4 +39,3 @@
   cursor: pointer;
   will-change: transform;
 }
-
